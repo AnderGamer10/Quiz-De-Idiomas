@@ -1,33 +1,44 @@
 <resources>
     <string name="app_name">Quiz de Idiomas</string>
 <!--    <string name="prueba">aaaaaaa </string>-->
-    <string name="pregunta1">¿Que personaje es de World of Warcraft?</string>
-    <string name="pregunta2">¿Cual era la capital del Imperio Bizantino?</string>
-    <string name="pregunta3">¿Quien mato a hitler?</string>
-    <string name="pregunta4">¿Cual ha sido el mejor imperio de la Historia?</string>
+<!--    <string name="pregunta1">¿Que personaje es de World of Warcraft?</string>-->
+<!--    <string name="pregunta2">¿Cual era la capital del Imperio Bizantino?</string>-->
+<!--    <string name="pregunta3">¿Quien mato a hitler?</string>-->
+<!--    <string name="pregunta4">¿Cual ha sido el mejor imperio de la Historia?</string>-->
+    <string name="pregunta">Pregunta:</string>
+    <string name="boton">Comprobar</string>
+    <array name="preguntas">
+        <item>¿Que personaje es de World of Warcraft?;*Rey Exanime;Cristiano ronaldo;Alejandro magno;Kim Jong-un</item>
+        <item>¿Cual era la capital del Imperio Bizantino?;*Constantinopla;Madrid;Estambul;Berlin</item>
+        <item>¿Quien mato a hitler?;*Hitler;Lionel Messi;Mariano Rajoy;Stalin</item>
+        <item>¿Cual ha sido el mejor imperio de la Historia?;*El imperio Español;El imperio Britanico;El imperio mongol; El imperio de la Dinastia Qing</item>
+    </array>
 
-    <array name="pregres1">
-        <item name="correcto">Rey Exanime</item>
-        <item name="incorrecto">Cristiano ronaldo</item>
-        <item name="incorrecto">Alejandro magno</item>
-        <item name="incorrecto">Kim Jong-un</item>
-    </array>
-    <array name="pregres2">
-        <item name="correcto">Constantinopla</item>
-        <item name="incorrecto">Madrid</item>
-        <item name="incorrecto">Estambul</item>
-        <item name="incorrecto">Berlin</item>
-    </array>
-    <array name="pregres3">
-        <item name="correcto">Hitler</item>
-        <item name="incorrecto">Lionel Messi</item>
-        <item name="incorrecto">Mariano Rajoy</item>
-        <item name="incorrecto">Stalin</item>
-    </array>
-    <array name="pregres4">
-        <item name="correcto">El imperio Español</item>
-        <item name="incorrecto">El imperio Britanico</item>
-        <item name="incorrecto">El imperio Mongol</item>
-        <item name="incorrecto">El imperio de la Dinastia Qing</item>
-    </array>
+
+
+
+<!--    <array name="pregres1">-->
+<!--        <item name="correcto">Rey Exanime</item>-->
+<!--        <item name="incorrecto">Cristiano ronaldo</item>-->
+<!--        <item name="incorrecto">Alejandro magno</item>-->
+<!--        <item name="incorrecto">Kim Jong-un</item>-->
+<!--    </array>-->
+<!--    <array name="pregres2">-->
+<!--        <item name="correcto">Constantinopla</item>-->
+<!--        <item name="incorrecto">Madrid</item>-->
+<!--        <item name="incorrecto">Estambul</item>-->
+<!--        <item name="incorrecto">Berlin</item>-->
+<!--    </array>-->
+<!--    <array name="pregres3">-->
+<!--        <item name="correcto">Hitler</item>-->
+<!--        <item name="incorrecto">Lionel Messi</item>-->
+<!--        <item name="incorrecto">Mariano Rajoy</item>-->
+<!--        <item name="incorrecto">Stalin</item>-->
+<!--    </array>-->
+<!--    <array name="pregres4">-->
+<!--        <item name="correcto">El imperio Español</item>-->
+<!--        <item name="incorrecto">El imperio Britanico</item>-->
+<!--        <item name="incorrecto">El imperio Mongol</item>-->
+<!--        <item name="incorrecto">El imperio de la Dinastia Qing</item>-->
+<!--    </array>-->
 </resources>
