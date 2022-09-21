@@ -6,12 +6,11 @@
 <!--    <string name="pregunta3">¿Quien mato a hitler?</string>-->
 <!--    <string name="pregunta4">¿Cual ha sido el mejor imperio de la Historia?</string>-->
     <string name="pregunta">Pregunta:</string>
-    <string name="boton">Comprobar</string>
+    <string name="boton">Continuar</string>
     <array name="preguntas">
-        <item>¿Que personaje es de World of Warcraft?;*Rey Exanime;Cristiano ronaldo;Alejandro magno;Kim Jong-un</item>
-        <item>¿Cual era la capital del Imperio Bizantino?;*Constantinopla;Madrid;Estambul;Berlin</item>
-        <item>¿Quien mato a hitler?;*Hitler;Lionel Messi;Mariano Rajoy;Stalin</item>
-        <item>¿Cual ha sido el mejor imperio de la Historia?;*El imperio Español;El imperio Britanico;El imperio mongol; El imperio de la Dinastia Qing</item>
+        <item>¿De donde provienen los marcianos?;*Marte;La tierra;Francia;Saturno</item>
+        <item>¿De donde provienen los murcianos?;*Murcia;Madrid;Estambul;Berlin</item>
+        <item>¿Como es perro en ruso?;*Sobaka;Koshka;Lev;Akula</item>
     </array>
 
 
