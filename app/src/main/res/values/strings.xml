@@ -10,7 +10,7 @@
     <array name="preguntas">
         <item>¿De donde provienen los marcianos?;*Marte;La tierra;Francia;Saturno</item>
         <item>¿De donde provienen los murcianos?;*Murcia;Madrid;Estambul;Berlin</item>
-        <item>¿Como es perro en ruso?;*Sobaka;Koshka;Lev;Akula</item>
+        <item>¿Como es perro en ruso?;Koshka;Lev;Akula;*Sobaka</item>
     </array>
 
 

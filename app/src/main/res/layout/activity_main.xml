@@ -21,7 +21,7 @@
 
 
     <Button
-        android:id="@+id/botonComprobar"
+        android:id="@+id/botonContinuar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/boton"
@@ -30,7 +30,7 @@
         app:layout_constraintHorizontal_bias="0.94"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <TextView
         android:id="@+id/textView2"
@@ -50,7 +50,7 @@
         android:id="@+id/opcion1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="164dp"
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/opcion3"
         app:layout_constraintEnd_toStartOf="@+id/opcion2"
@@ -63,7 +63,7 @@
         android:id="@+id/opcion2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="164dp"
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/opcion4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +82,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.436" />
+        app:layout_constraintVertical_bias="0.386" />
 
     <Button
         android:id="@+id/opcion4"
@@ -94,6 +94,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/opcion3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.436" />
+        app:layout_constraintVertical_bias="0.385" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
