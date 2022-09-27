@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -21,24 +22,39 @@ public class MainActivity extends AppCompatActivity {
     private int botonesRespuestas[] = {
             R.id.opcion1,R.id.opcion2,R.id.opcion3,R.id.opcion4
     };
-    private int pregunta = 0;
+    private int red = Color.argb(100, 255,0,0);
+    private int green = Color.argb(100, 0,255,0);
+    private int pregunta = 0, respCorrectas = 0, respIncorrectas = 0;
+
     private String correcto, textoBoton;
-    Button botonComprobar1,botonComprobar2,botonComprobar3,botonComprobar4, botonContinuar;
+    Button botonComprobar1,botonComprobar2,botonComprobar3,botonComprobar4, botonContinuar, botonCompletar;
+    ImageButton goblin, lich, sylvanas, anderwow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        getResources().getStringArray(R.array.preguntas);
-
-        correcto = mostrarPregunta(pregunta);
 
         botonContinuar = findViewById(R.id.botonContinuar);
+        botonCompletar = findViewById(R.id.btnCompletar);
+        botonCompletar.setVisibility(View.INVISIBLE);
+        botonContinuar.setVisibility(View.VISIBLE);
 
         botonComprobar1 = findViewById(R.id.opcion1);
         botonComprobar2 = findViewById(R.id.opcion2);
         botonComprobar3 = findViewById(R.id.opcion3);
         botonComprobar4 = findViewById(R.id.opcion4);
 
+        goblin = findViewById(R.id.goblinImg);
+        lich = findViewById(R.id.lichImg);
+        sylvanas = findViewById(R.id.sylvanasImg);
+        anderwow = findViewById(R.id.anderwowImg);
+
+        goblin.setVisibility(View.INVISIBLE);
+        lich.setVisibility(View.INVISIBLE);
+        sylvanas.setVisibility(View.INVISIBLE);
+        anderwow.setVisibility(View.INVISIBLE);
+
+        correcto = mostrarPregunta(pregunta);
 
         botonContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,13 +66,87 @@ public class MainActivity extends AppCompatActivity {
                     botonComprobar2.setBackgroundColor(Color.parseColor("#FF6200EE"));
                     botonComprobar3.setBackgroundColor(Color.parseColor("#FF6200EE"));
                     botonComprobar4.setBackgroundColor(Color.parseColor("#FF6200EE"));
+
                     botonComprobar1.setEnabled(true);
                     botonComprobar2.setEnabled(true);
                     botonComprobar3.setEnabled(true);
                     botonComprobar4.setEnabled(true);
+
+                    botonComprobar1.setClickable(true);
+                    botonComprobar2.setClickable(true);
+                    botonComprobar3.setClickable(true);
+                    botonComprobar4.setClickable(true);
+                }else if(pregunta != getResources().getStringArray(R.array.preguntas).length){
+                    botonComprobar1.setVisibility(View.INVISIBLE);
+                    botonComprobar2.setVisibility(View.INVISIBLE);
+                    botonComprobar3.setVisibility(View.INVISIBLE);
+                    botonComprobar4.setVisibility(View.INVISIBLE);
+
+                    goblin.setVisibility(View.VISIBLE);
+                    lich.setVisibility(View.VISIBLE);
+                    sylvanas.setVisibility(View.VISIBLE);
+                    anderwow.setVisibility(View.VISIBLE);
+
+                    botonCompletar.setVisibility(View.VISIBLE);
+                    botonContinuar.setVisibility(View.INVISIBLE);
+                    String[] preguntas = getResources().getStringArray(R.array.preguntasImg);
+                    TextView text_pregunta = (TextView) findViewById(R.id.preguntaId);
+                    text_pregunta.setText(preguntas[0]);
+                    Log.i("correctas", String.valueOf(respCorrectas));
+                    Log.i("incorrectas", String.valueOf(respIncorrectas));
                 }
             }
         });
+
+        botonCompletar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goblin.setVisibility(View.INVISIBLE);
+                lich.setVisibility(View.INVISIBLE);
+                sylvanas.setVisibility(View.INVISIBLE);
+                anderwow.setVisibility(View.INVISIBLE);
+
+
+            }
+        });
+
+        goblin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_LONG).show();
+                goblin.setColorFilter(red);
+                respIncorrectas++;
+                botonComprobar1.setClickable(false);
+                botonComprobar2.setEnabled(false);
+                botonComprobar3.setEnabled(false);
+                botonComprobar4.setEnabled(false);
+            }
+        });
+        lich.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Correcto", Toast.LENGTH_LONG).show();
+                lich.setColorFilter(green);
+                respCorrectas++;
+            }
+        });
+        sylvanas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_LONG).show();
+                sylvanas.setColorFilter(red);
+                respIncorrectas++;
+            }
+        });
+        anderwow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_LONG).show();
+                anderwow.setColorFilter(red);
+                respIncorrectas++;
+            }
+        });
+
 
         botonComprobar1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,10 +155,13 @@ public class MainActivity extends AppCompatActivity {
                 if (Objects.equals(correcto, textoBoton)){
                     Toast.makeText(MainActivity.this, "Correcto", Toast.LENGTH_LONG).show();
                     botonComprobar1.setBackgroundColor(Color.parseColor("#31C000"));
+                    respCorrectas++;
                 }else {
                     Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_LONG).show();
                     botonComprobar1.setBackgroundColor(Color.parseColor("#CD0000"));
+                    respIncorrectas++;
                 }
+                botonComprobar1.setClickable(false);
                 botonComprobar2.setEnabled(false);
                 botonComprobar3.setEnabled(false);
                 botonComprobar4.setEnabled(false);
@@ -83,10 +176,13 @@ public class MainActivity extends AppCompatActivity {
                 if (Objects.equals(correcto, textoBoton)){
                     Toast.makeText(MainActivity.this, "Correcto", Toast.LENGTH_LONG).show();
                     botonComprobar2.setBackgroundColor(Color.parseColor("#31C000"));
+                    respCorrectas++;
                 }else {
                     Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_LONG).show();
                     botonComprobar2.setBackgroundColor(Color.parseColor("#CD0000"));
+                    respIncorrectas++;
                 }
+                botonComprobar2.setClickable(false);
                 botonComprobar1.setEnabled(false);
                 botonComprobar3.setEnabled(false);
                 botonComprobar4.setEnabled(false);
@@ -99,10 +195,13 @@ public class MainActivity extends AppCompatActivity {
                 if (Objects.equals(correcto, textoBoton)){
                     Toast.makeText(MainActivity.this, "Correcto", Toast.LENGTH_LONG).show();
                     botonComprobar3.setBackgroundColor(Color.parseColor("#31C000"));
+                    respCorrectas++;
                 }else {
                     Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_LONG).show();
                     botonComprobar3.setBackgroundColor(Color.parseColor("#CD0000"));
+                    respIncorrectas++;
                 }
+                botonComprobar3.setClickable(false);
                 botonComprobar1.setEnabled(false);
                 botonComprobar2.setEnabled(false);
                 botonComprobar4.setEnabled(false);
@@ -115,10 +214,13 @@ public class MainActivity extends AppCompatActivity {
                 if (Objects.equals(correcto, textoBoton)){
                     Toast.makeText(MainActivity.this, "Correcto", Toast.LENGTH_LONG).show();
                     botonComprobar4.setBackgroundColor(Color.parseColor("#31C000"));
+                    respCorrectas++;
                 }else {
                     Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_LONG).show();
                     botonComprobar4.setBackgroundColor(Color.parseColor("#CD0000"));
+                    respIncorrectas++;
                 }
+                botonComprobar4.setClickable(false);
                 botonComprobar1.setEnabled(false);
                 botonComprobar2.setEnabled(false);
                 botonComprobar3.setEnabled(false);

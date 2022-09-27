@@ -6,11 +6,15 @@
 <!--    <string name="pregunta3">¿Quien mato a hitler?</string>-->
 <!--    <string name="pregunta4">¿Cual ha sido el mejor imperio de la Historia?</string>-->
     <string name="pregunta">Pregunta:</string>
-    <string name="boton">Continuar</string>
+    <string name="botonContinuar">Continuar</string>
+    <string name="botonCompletar">Completar</string>
     <array name="preguntas">
         <item>¿De donde provienen los marcianos?;*Marte;La tierra;Francia;Saturno</item>
         <item>¿De donde provienen los murcianos?;*Murcia;Madrid;Estambul;Berlin</item>
         <item>¿Como es perro en ruso?;Koshka;Lev;Akula;*Sobaka</item>
+    </array>
+    <array name="preguntasImg">
+        <item>¿Quien es el Lich King?</item>
     </array>
 
 
