@@ -4,6 +4,8 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,15 +29,20 @@ public class MainActivity extends AppCompatActivity {
     private int pregunta = 0, respCorrectas = 0, respIncorrectas = 0;
 
     private String correcto, textoBoton;
-    Button botonComprobar1,botonComprobar2,botonComprobar3,botonComprobar4, botonContinuar, botonCompletar;
+    Button botonComprobar1,botonComprobar2,botonComprobar3,botonComprobar4, botonContinuar, botonCompletar, botonReiniciar;
     ImageButton goblin, lich, sylvanas, anderwow;
+    TextView correctas, incorrectas, preguntaDosPuntos, preguntaTexto, resultados;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        preguntaDosPuntos = findViewById(R.id.preguntaDosPuntos);
+        preguntaTexto = findViewById(R.id.preguntaId);
+
         botonContinuar = findViewById(R.id.botonContinuar);
         botonCompletar = findViewById(R.id.btnCompletar);
+        botonReiniciar = findViewById(R.id.btnReiniciar);
         botonCompletar.setVisibility(View.INVISIBLE);
         botonContinuar.setVisibility(View.VISIBLE);
 
@@ -54,6 +61,12 @@ public class MainActivity extends AppCompatActivity {
         sylvanas.setVisibility(View.INVISIBLE);
         anderwow.setVisibility(View.INVISIBLE);
 
+        correctas = findViewById(R.id.Correctas);
+        incorrectas = findViewById(R.id.Incorrectas);
+        correctas.setVisibility(View.INVISIBLE);
+        incorrectas.setVisibility(View.INVISIBLE);
+        resultados = findViewById(R.id.Resultados);
+        resultados.setVisibility(View.INVISIBLE);
         correcto = mostrarPregunta(pregunta);
 
         botonContinuar.setOnClickListener(new View.OnClickListener() {
@@ -92,8 +105,6 @@ public class MainActivity extends AppCompatActivity {
                     String[] preguntas = getResources().getStringArray(R.array.preguntasImg);
                     TextView text_pregunta = (TextView) findViewById(R.id.preguntaId);
                     text_pregunta.setText(preguntas[0]);
-                    Log.i("correctas", String.valueOf(respCorrectas));
-                    Log.i("incorrectas", String.valueOf(respIncorrectas));
                 }
             }
         });
@@ -106,9 +117,25 @@ public class MainActivity extends AppCompatActivity {
                 sylvanas.setVisibility(View.INVISIBLE);
                 anderwow.setVisibility(View.INVISIBLE);
 
+                correctas.setVisibility(View.VISIBLE);
+                incorrectas.setVisibility(View.VISIBLE);
+                resultados.setVisibility(View.VISIBLE);
 
+                preguntaDosPuntos.setVisibility(View.INVISIBLE);
+                preguntaTexto.setVisibility(View.INVISIBLE);
+
+                Log.i("correctas", String.valueOf(respCorrectas));
+                Log.i("incorrectas", String.valueOf(respIncorrectas));
             }
         });
+
+        botonReiniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reiniciarApp();
+            }
+        });
+
 
         goblin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,10 +143,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_LONG).show();
                 goblin.setColorFilter(red);
                 respIncorrectas++;
-                botonComprobar1.setClickable(false);
-                botonComprobar2.setEnabled(false);
-                botonComprobar3.setEnabled(false);
-                botonComprobar4.setEnabled(false);
+                goblin.setClickable(false);
+                lich.setEnabled(false);
+                sylvanas.setEnabled(false);
+                anderwow.setEnabled(false);
             }
         });
         lich.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +155,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Correcto", Toast.LENGTH_LONG).show();
                 lich.setColorFilter(green);
                 respCorrectas++;
+                goblin.setEnabled(false);
+                lich.setClickable(false);
+                sylvanas.setEnabled(false);
+                anderwow.setEnabled(false);
             }
         });
         sylvanas.setOnClickListener(new View.OnClickListener() {
@@ -136,6 +167,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_LONG).show();
                 sylvanas.setColorFilter(red);
                 respIncorrectas++;
+                goblin.setEnabled(false);
+                lich.setEnabled(false);
+                sylvanas.setClickable(false);
+                anderwow.setEnabled(false);
             }
         });
         anderwow.setOnClickListener(new View.OnClickListener() {
@@ -144,6 +179,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_LONG).show();
                 anderwow.setColorFilter(red);
                 respIncorrectas++;
+                goblin.setEnabled(false);
+                lich.setEnabled(false);
+                sylvanas.setEnabled(false);
+                anderwow.setClickable(false);
             }
         });
 
@@ -165,8 +204,6 @@ public class MainActivity extends AppCompatActivity {
                 botonComprobar2.setEnabled(false);
                 botonComprobar3.setEnabled(false);
                 botonComprobar4.setEnabled(false);
-                Log.i("Correcto",correcto);
-                Log.i("Texto",textoBoton);
             }
         });
         botonComprobar2.setOnClickListener(new View.OnClickListener() {
@@ -253,5 +290,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return correcto;
+    }
+
+    public void reiniciarApp() {
+        Activity mActivity = MainActivity.this;
+        mActivity.recreate();
     }
 }

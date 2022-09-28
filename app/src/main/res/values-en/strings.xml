@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Languages Quiz</string>
+    <string name="pregunta">Question:</string>
+    <string name="botonContinuar">Continue</string>
+    <string name="botonCompletar">Complete</string>
+    <string name="botonReiniciar">Restart</string>
+    <string name="RespCorrectas">Correct: </string>
+    <string name="RespIncorrectas">Incorrect: </string>
+    <string name="Resultados">Results: </string>
+    <array name="preguntas">
+        <item>Where do the Martians come from??;*Mars;Earth;France;Saturn</item>
+        <item>Where do the Murcians come from?;*Murcia;Madrid;Istambul;Berlin</item>
+        <item>How is dog in Russian?;Koshka;Lev;Akula;*Sobaka</item>
+    </array>
+    <array name="preguntasImg">
+        <item>¿Who is the Lich King?</item>
+    </array>
+</resources>
