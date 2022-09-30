@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private int pregunta = 0, respCorrectas = 0, cantPreguntas = 0;
 
     private String correcto, textoBoton;
-    Button botonComprobar1,botonComprobar2,botonComprobar3,botonComprobar4, botonContinuar, botonCompletar, botonReiniciar;
+    Button botonComprobar1,botonComprobar2,botonComprobar3,botonComprobar4, botonContinuar, botonCompletar, botonReiniciar, botonCambiarQuiz;
     ImageButton goblin, lich, sylvanas, anderwow;
     TextView preguntaDosPuntos, preguntaTexto, resultadosTexto, cantPreguntasTexto, cantAcertadasTexto, barra;
     TextToSpeech textToSpeech;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         botonContinuar = findViewById(R.id.botonContinuar);
         botonCompletar = findViewById(R.id.btnCompletar);
         botonReiniciar = findViewById(R.id.btnReiniciar);
+        botonCambiarQuiz = findViewById(R.id.btnCambiarQuiz);
         botonCompletar.setVisibility(View.INVISIBLE);
         botonContinuar.setVisibility(View.VISIBLE);
 
@@ -82,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
         textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int i) {
-
                 if(i!=TextToSpeech.ERROR){
                     textToSpeech.setLanguage(Locale.UK);
                 }
@@ -95,6 +96,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 textToSpeech.speak(textPreguntas.getText().toString(),TextToSpeech.QUEUE_FLUSH,null);
+            }
+        });
+
+        botonCambiarQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
             }
         });
 
@@ -136,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
                     text_pregunta.setText(preguntas[0]);
                 }
                 cantPreguntas++;
+                MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.sonidocontinuar);
+                mediaPlayer.start();
             }
         });
 
@@ -160,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
                 cantPreguntasTexto.setText(String.valueOf(cantPreguntas));
                 cantAcertadasTexto.setText(String.valueOf(respCorrectas));
 
-                Log.i("correctas", String.valueOf(respCorrectas));
             }
         });
 
@@ -181,6 +191,8 @@ public class MainActivity extends AppCompatActivity {
                 lich.setEnabled(false);
                 sylvanas.setEnabled(false);
                 anderwow.setEnabled(false);
+                MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.incorrecto);
+                mediaPlayer.start();
             }
         });
         lich.setOnClickListener(new View.OnClickListener() {
@@ -189,6 +201,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Correcto", Toast.LENGTH_SHORT).show();
                 lich.setColorFilter(green);
                 respCorrectas++;
+                MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.correcto);
+                mediaPlayer.start();
                 goblin.setEnabled(false);
                 lich.setClickable(false);
                 sylvanas.setEnabled(false);
@@ -204,6 +218,8 @@ public class MainActivity extends AppCompatActivity {
                 lich.setEnabled(false);
                 sylvanas.setClickable(false);
                 anderwow.setEnabled(false);
+                MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.incorrecto);
+                mediaPlayer.start();
             }
         });
         anderwow.setOnClickListener(new View.OnClickListener() {
@@ -215,9 +231,10 @@ public class MainActivity extends AppCompatActivity {
                 lich.setEnabled(false);
                 sylvanas.setEnabled(false);
                 anderwow.setClickable(false);
+                MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.incorrecto);
+                mediaPlayer.start();
             }
         });
-
 
         botonComprobar1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -227,9 +244,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Correcto", Toast.LENGTH_SHORT).show();
                     botonComprobar1.setBackgroundColor(Color.parseColor("#31C000"));
                     respCorrectas++;
+                    MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.correcto);
+                    mediaPlayer.start();
                 }else {
                     Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_SHORT).show();
                     botonComprobar1.setBackgroundColor(Color.parseColor("#CD0000"));
+                    MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.incorrecto);
+                    mediaPlayer.start();
                 }
                 botonComprobar1.setClickable(false);
                 botonComprobar2.setEnabled(false);
@@ -245,9 +266,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Correcto", Toast.LENGTH_SHORT).show();
                     botonComprobar2.setBackgroundColor(Color.parseColor("#31C000"));
                     respCorrectas++;
+                    MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.correcto);
+                    mediaPlayer.start();
                 }else {
                     Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_SHORT).show();
                     botonComprobar2.setBackgroundColor(Color.parseColor("#CD0000"));
+                    MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.incorrecto);
+                    mediaPlayer.start();
                 }
                 botonComprobar2.setClickable(false);
                 botonComprobar1.setEnabled(false);
@@ -263,9 +288,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Correcto", Toast.LENGTH_SHORT).show();
                     botonComprobar3.setBackgroundColor(Color.parseColor("#31C000"));
                     respCorrectas++;
+                    MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.correcto);
+                    mediaPlayer.start();
                 }else {
                     Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_SHORT).show();
                     botonComprobar3.setBackgroundColor(Color.parseColor("#CD0000"));
+                    MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.incorrecto);
+                    mediaPlayer.start();
                 }
                 botonComprobar3.setClickable(false);
                 botonComprobar1.setEnabled(false);
@@ -281,9 +310,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Correcto", Toast.LENGTH_SHORT).show();
                     botonComprobar4.setBackgroundColor(Color.parseColor("#31C000"));
                     respCorrectas++;
+                    MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.correcto);
+                    mediaPlayer.start();
                 }else {
                     Toast.makeText(MainActivity.this, "Incorrecto", Toast.LENGTH_SHORT).show();
                     botonComprobar4.setBackgroundColor(Color.parseColor("#CD0000"));
+                    MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(), R.raw.incorrecto);
+                    mediaPlayer.start();
                 }
                 botonComprobar4.setClickable(false);
                 botonComprobar1.setEnabled(false);
@@ -292,6 +325,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private String mostrarPregunta(int num){
         String[] preguntas = getResources().getStringArray(R.array.preguntas);
         String[] opcion = preguntas[num].split(";");
@@ -299,7 +333,6 @@ public class MainActivity extends AppCompatActivity {
         text_pregunta.setText(opcion[0]);
         String correcto = "";
         for (int x = 0; x < opcion.length-1;x++){
-            Log.i("s",opcion[x]);
             TextView text_resp = (TextView) findViewById(botonesRespuestas[x]);
             if (x == 0){
                 if (opcion[x+1].charAt(0) == '*'){

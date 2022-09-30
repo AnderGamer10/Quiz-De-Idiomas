@@ -4,6 +4,7 @@
     <string name="botonContinuar">Continuar</string>
     <string name="botonCompletar">Completar</string>
     <string name="botonReiniciar">Reiniciar</string>
+    <string name="botonCambiarQuiz">Cambiar Quiz</string>
     <string name="RespCorrectas">Correctas: </string>
     <string name="RespIncorrectas">Incorrectas: </string>
     <string name="Resultados">Resultados: </string>
@@ -15,4 +16,14 @@
     <array name="preguntasImg">
         <item>¿Quien es el Lich King?</item>
     </array>
+
+<!--    MainActivity2 Preguntas -->
+    <array name="preguntasActivity2">
+        <item>¿Quien es el Linch King?</item>
+        <item>¿Quien es Sylvanas Brisaveloz?</item>
+        <item>¿Cual es un goblin?</item>
+        <item>¿Quien es un humano?</item>
+    </array>
+
+
 </resources>

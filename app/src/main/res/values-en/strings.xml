@@ -5,6 +5,7 @@
     <string name="botonContinuar">Continue</string>
     <string name="botonCompletar">Complete</string>
     <string name="botonReiniciar">Restart</string>
+    <string name="botonCambiarQuiz">Change Quiz</string>
     <string name="RespCorrectas">Correct: </string>
     <string name="RespIncorrectas">Incorrect: </string>
     <string name="Resultados">Results: </string>
@@ -16,4 +17,13 @@
     <array name="preguntasImg">
         <item>¿Who is the Lich King?</item>
     </array>
+
+    <!--    MainActivity2 Preguntas -->
+    <array name="preguntasActivity2">
+        <item>Who is the Lich King?</item>
+        <item>Who is Sylvanas Windrunner?</item>
+        <item>Which is a goblin?</item>
+        <item>Who is a human?</item>
+    </array>
+
 </resources>
